@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django</title>
+    <style>
+        div{
+            height:400px;
+            background: #ddd;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div>
+    欢迎使用django
+</div>
+<form action="/index/" method="post">
+    {% csrf_token %}
+    <label for="">用户名</label><input type="text" name="username">
+    <label for="">密码</label><input type="password" name="password">
+    <input type="submit" value="提交">
+</form>
+
+<table border="1" cellspacing="0">
+    <thead>
+        <th>用户名</th>
+        <th>密码</th>
+    </thead>
+    <tbody>
+        {% for msg in data %}
+        <tr>
+            <td>{{ msg.user }}</td>
+            <td>{{ msg.pwd }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
